@@ -42,16 +42,12 @@ void Animation::reset() {
 void Animation::rotate_x(float angle) {
     m_rotate_angle_x += angle;
     if (m_rotate_angle_x > 360.0f) m_rotate_angle_x -= 360.0f;
-
-    // Apply rotation around the local X-axis
-    m_model_mat = glm::rotate(m_model_mat, glm::radians(angle), glm::vec3(1.0f, 0.0f, 0.0f));
+    else if (m_rotate_angle_x < 0.0f) m_rotate_angle_x += 360.0f;
 }
 
 void Animation::rotate_y(float angle) {
     m_rotate_angle_y += angle;
     if (m_rotate_angle_y > 360.0f) m_rotate_angle_y -= 360.0f;
-
-    // Apply rotation around the global Y-axis
-    m_model_mat = glm::rotate(m_model_mat, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+    else if (m_rotate_angle_y < 0.0f) m_rotate_angle_y += 360.0f;
 }
 
