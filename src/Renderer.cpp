@@ -16,6 +16,7 @@ bool Renderer::keys[1024];
 Renderer::Renderer() {}
 Renderer::~Renderer() {}
 
+
 void Renderer::nanogui_init(GLFWwindow* window) {
 	m_nanogui_screen = new nanogui::Screen();
 	m_nanogui_screen->initialize(window, true);
@@ -36,24 +37,23 @@ void Renderer::nanogui_init(GLFWwindow* window) {
 		m_camera->reset();
 	});
 
-	
-// Animation controls
-gui_1->addGroup("Bunny Rotation");
 
-// Button to rotate around the local x-axis
-gui_1->addButton("Rotate Local X by 15 degrees", [this]() {
-    m_animation->rotate_x(15.0f); // Rotate by 15 degrees
-});
+	gui_1->addVariable("Rotate Angle a", m_animation->m_rotate_angle_x)->setSpinnable(true);
+	gui_1->addVariable("Rotate Angle b", m_animation->m_rotate_angle_y)->setSpinnable(true);
 
-// Button to rotate around the global y-axis
-gui_1->addButton("Rotate Global Y by 15 degrees", [this]() {
-    m_animation->rotate_y(15.0f); // Rotate by 15 degrees
-});
+	gui_1->addButton("Rotate Local X", [this]() {
+    	m_animation->rotate_x(15.0f); // Rotate the model around its local X-axis by 15 degrees
+	});
 
-// Button to reset the bunny
-gui_1->addButton("Reset Model", [this]() {
-    m_animation->reset();
-});
+	gui_1->addButton("Rotate Global Y", [this]() {
+    	m_animation->rotate_y(15.0f); // Rotate the model around the global Y-axis by 15 degrees
+	});
+
+	gui_1->addButton("Reset", [this]() {
+    	m_animation->reset(); // Reset all rotations
+	});
+
+
 
 	m_nanogui_screen->setVisible(true);
 	m_nanogui_screen->performLayout();
