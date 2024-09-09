@@ -37,16 +37,19 @@ void Renderer::nanogui_init(GLFWwindow* window) {
 		m_camera->reset();
 	});
 
+	// Temporary variables to avoid error with accumulating rotation
+	float temp_x = 0.0f;
+	float temp_y = 0.0f;
 
-	gui_1->addVariable("Rotate Angle a", m_animation->m_rotate_angle_x)->setSpinnable(true);
-	gui_1->addVariable("Rotate Angle b", m_animation->m_rotate_angle_y)->setSpinnable(true);
+	gui_1->addVariable("Rotate Angle a", temp_x)->setSpinnable(true);
+	gui_1->addVariable("Rotate Angle b", temp_y)->setSpinnable(true);
 
-	gui_1->addButton("Rotate Local X", [this]() {
-    	m_animation->rotate_x(15.0f); // Rotate the model around its local X-axis by 15 degrees
+	gui_1->addButton("Rotate Local X", [this, &temp_x]() {
+    	m_animation->rotate_x(temp_x); 
 	});
 
-	gui_1->addButton("Rotate Global Y", [this]() {
-    	m_animation->rotate_y(15.0f); // Rotate the model around the global Y-axis by 15 degrees
+	gui_1->addButton("Rotate Global Y", [this, &temp_y]() {
+    	m_animation->rotate_y(temp_y); 
 	});
 
 	gui_1->addButton("Reset", [this]() {
