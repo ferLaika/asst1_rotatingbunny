@@ -19,7 +19,14 @@ public:
 	//////////
 	// Task 3: define rotation variables/functions here
 
+	void rotate_x(float angle);
+    void rotate_y(float angle);
+
+
+
 private:
 	glm::mat4 m_model_mat;
+	float m_rotate_angle_x; // Rotation around the bunny's own x-axis
+    float m_rotate_angle_y; // Rotation around the global y-axis
 };
 
