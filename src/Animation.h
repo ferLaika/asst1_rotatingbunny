@@ -22,8 +22,6 @@ public:
 	void rotate_x(float angle);
     void rotate_y(float angle);
 
-
-
 private:
 	float m_rotate_angle_x; // x rotation local
     float m_rotate_angle_y; // y rotation global

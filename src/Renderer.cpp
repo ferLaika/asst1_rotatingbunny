@@ -37,10 +37,11 @@ void Renderer::nanogui_init(GLFWwindow* window) {
 		m_camera->reset();
 	});
 
-	// Temporary variables to avoid error with accumulating rotation
+	// Temporary variables to avoid error with accumulating rotation (since actual values as private members not to be modified by user)
 	float temp_x = 0.0f;
 	float temp_y = 0.0f;
 
+	gui_1->addGroup("Camera Rotation");
 	gui_1->addVariable("Rotate Angle a", temp_x)->setSpinnable(true);
 	gui_1->addVariable("Rotate Angle b", temp_y)->setSpinnable(true);
 
@@ -53,8 +54,9 @@ void Renderer::nanogui_init(GLFWwindow* window) {
 	});
 
 	gui_1->addButton("Reset", [this]() {
-    	m_animation->reset(); // Reset all rotations
+    	m_animation->reset(); // Reset the bunny
 	});
+	gui_1->addGroup("Fernando de Salvidea");
 
 
 
