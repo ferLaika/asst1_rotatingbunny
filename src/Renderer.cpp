@@ -17,7 +17,6 @@ bool Renderer::keys[1024];
 Renderer::Renderer() {}
 Renderer::~Renderer() {}
 
-
 void Renderer::nanogui_init(GLFWwindow* window) {
 	m_nanogui_screen = new nanogui::Screen();
 	m_nanogui_screen->initialize(window, true);
@@ -58,8 +57,6 @@ void Renderer::nanogui_init(GLFWwindow* window) {
     	m_animation->reset(); // Reset the bunny
 	});
 	gui_1->addGroup("Fernando de Salvidea");
-
-
 
 	m_nanogui_screen->setVisible(true);
 	m_nanogui_screen->performLayout();
