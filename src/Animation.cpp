@@ -1,4 +1,5 @@
 #include "Animation.h"
+//Fernando de Salvidea FXD210003
 
 Animation::Animation() {
 	this->m_model_mat = glm::mat4(1.0f);
@@ -12,19 +13,16 @@ void Animation::init() {
 }
 
 void Animation::update(float delta_time) {
-    // Start with the identity matrix
     glm::mat4 model_mat = glm::mat4(1.0f);
 
-    // Rotate around the global y-axis (World Coordinate System)
+    // global y rotation
     model_mat = glm::rotate(model_mat, glm::radians(m_rotate_angle_y), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    // Translate to the initial position after the global rotation
+    // translate to the right
     model_mat = glm::translate(model_mat, glm::vec3(5.0f, 0.0f, 0.0f));
 
-    // Rotate around the bunny's local x-axis
+    // note: local x rotation
     model_mat = glm::rotate(model_mat, glm::radians(m_rotate_angle_x), glm::vec3(1.0f, 0.0f, 0.0f));
-
-    // Update the model matrix
     m_model_mat = model_mat;
 }
 
