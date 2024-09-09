@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project(asst1)
+add_definitions(-DGLM_ENABLE_EXPERIMENTAL)
+
 
 #-------------------------------------------------------------------------------
 # Settings

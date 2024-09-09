@@ -1,4 +1,7 @@
 #include "Renderer.h"
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/dual_quaternion.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 Camera* Renderer::m_camera = new Camera();
 
@@ -95,6 +98,12 @@ void Renderer::init() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // IMPORTANT!!
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	#if defined(__APPLE__)
+
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+    #endif
 
 	m_camera->init();
 	m_lightings->init();
